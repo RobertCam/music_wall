@@ -6,7 +6,9 @@
     differences in how form elements appear between Firefox and IE
     See: http://necolas.github.com/normalize.css/
   -->
-  <link rel="stylesheet" href="/stylesheets/normalize.css">
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <!--
     application.css is where you put your styles
   -->
@@ -18,6 +20,59 @@
   <title></title>
 </head>
 <body>
+  <div class="navbar-wrapper">
+    <div class="container">
+      <div class="navbar navbar-inverse navbar-static-top">
+        
+          <div class="navbar-header">
+        <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+          <a class="navbar-brand" href="#">MUSIC WALL</a>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="/">Home</a></li>
+              <li><a href="/tracks">Tracks</a></li>
+              <li><a href="/tracks/new"><small>Add a song</small></a></li> 
+              <!-- <li><a href="/profile/:id">Profile</a></li> -->
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="">Action</a></li>
+                  <li><a href="">Another action</a></li>
+                  <li><a href="">Something else here</a></li>
+                </ul>
+              </li>
+              <li class="pull-right"><a href="/logout" class="btn btn-danger">Logout</a></li>
+              <li class="pull-right"><a href="/login">Login</a></li>
+            </ul>
+          </div>
+
+      </div>
+    </div>
+  </div>
   <%= yield %>
+
+  <div class="row">
+    <div class="col-md-4 text-center">
+      <img class="profile-img" src="http://placehold.it/140x140">
+      <h2>Link 1</h2>
+    </div>
+    <div class="col-md-4 text-center">
+      <img class="profile-img" src="http://placehold.it/140x140">
+      <h2>Link 2</h2>
+    </div>
+    <div class="col-md-4 text-center">
+      <a href="/profile/edit"><img class="profile-img" src="http://placehold.it/140x140"></a>
+      <a href="/profile/:id"><h2>Profile</h2></a>
+    </div>
+  </div>
+  <footer>
+    <p class="pull-right"><a href="#">Back to top</a></p>
+    <p>MUSIC WALL <a href="/">contact us info@blablah.com</a></p>
+  </footer>
 </body>
 </html>

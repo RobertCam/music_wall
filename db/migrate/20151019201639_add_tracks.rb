@@ -4,7 +4,7 @@ class AddTracks < ActiveRecord::Migration
       t.string :title
       t.string :artist
       t.string :url
-      t.float :length
+      t.string :length
       t.timestamp :created_at
       t.timestamp :updated_at
     end
