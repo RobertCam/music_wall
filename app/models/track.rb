@@ -1,4 +1,4 @@
-class Track < Activerecord::Base
+class Track < ActiveRecord::Base
 
 
 end
