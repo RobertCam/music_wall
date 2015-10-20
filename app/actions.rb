@@ -57,6 +57,15 @@ get '/tracks' do
   erb :'tracks/index'
 end
 
+post "" do
+  unless @upvote.user_id == @user.id
+    @upvote = UpVote.new(
+      track_id: Track.id
+      )
+    Track.up_votes += 1
+  end
+end
+
 get '/tracks/new' do
   @track = Track.new
   erb :'tracks/new'
@@ -78,4 +87,9 @@ post '/tracks' do
   else 
     erb :'/tracks/new'
   end
+end
+
+get '/logout' do
+  session.clear
+  redirect "/login"
 end

@@ -1,13 +1,17 @@
 <h1>All Tracks</h1>
 <hr/>
 
-<% @tracks.each do |track| %>
-  <div class="track">
-    <h3><a href="/tracks/<%= track.id %>"><%= track.artist %></a> </h3>
-    <p>
-      <%= track.title %>
-    </p>
-  </div>
-<% end %>
+<div class="container">
+    <% @tracks.each do |track| %>
+      <div class="col-md-3 col-md-offset-1">
+        <h3><a href="/tracks/<%= track.id %>"><%= track.artist %></a> </h3>
+        <p>
+          <%= track.title %>
+        </p>
+        <form class="upvote" method="POST" action="">
+          <button class="btn btn-lg btn-primary btn-block" type="submit">UP VOTE</button>
+        </form>
+      </div>
+    <% end %>
+</div>
 
-<a href="/tracks/new">Post a song... It's FREE (for now)!</a>
