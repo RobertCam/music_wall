@@ -8,9 +8,14 @@
         <p>
           <%= track.title %>
         </p>
-        <form class="upvote" method="POST" action="">
+        <!-- add conditoin -->
+        <% if session[:user_id] %>
+        <form class="upvote" method="POST" action="/upvote">
+          <!-- hidden input with track id -->
+          <input type="hidden" name="track" id="track" value="<%= track.id %>">
           <button class="btn btn-lg btn-primary btn-block" type="submit">UP VOTE</button>
         </form>
+        <% end %>
       </div>
     <% end %>
 </div>

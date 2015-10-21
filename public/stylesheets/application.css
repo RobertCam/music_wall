@@ -18,7 +18,7 @@ body {
 
 .col-md-3
 {
-    width: 200px;
+    width: 186px;
     background-color: rgba(102, 255, 153, 0.6);
     border-radius: 10px;
     border: 2px solid black;
@@ -58,6 +58,7 @@ body {
 .container 
 {
     padding: 25px;
+    margin: 0px;
 }
 
 .padding 
@@ -69,4 +70,16 @@ h1
 {
     color: azure;
 }
+
+.cover-image
+{
+    border-radius: 20px;
+    margin: 200px;
+    padding: 200px;
+    text-align: center;
+    background-size: cover;
+
+    background-image: url("https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTWXodPpE6Wa7X1HaShRD4zWeZyinBUjwobHSfyGS994u1SoONj5Q");
+}
+
 

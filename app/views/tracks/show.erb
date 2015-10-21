@@ -1,16 +1,76 @@
 <h1><%= @track.url %></h1>
-
-<p>
-  Artist: <%= @track.artist %>
-</p>
-
-<p>
-  Song: <%= @track.title  %>
-</p>
-
-<p>
-Length: <%= @track.length %>
-</p>
-
 <hr/>
-<a href="/tracks">Back to All Messages</a>
+
+<div class="container">
+  <div class="col-sm-6 col-md-4 col-md-offset-4">
+    <div class="account-wall">
+      <h2>
+        Artist: <%= @track.artist %>
+      </h2>
+      <h3>
+        Song: <%= @track.title %>
+      </h3>
+      <p>
+        Length: <%= @track.length %>
+      </p>
+      <p>
+        URL: <%= @track.url %>
+      </p>
+      <% if @track.user_id == session[:user_id] %>
+      <form class="delete" method="POST" action="/delete">
+        <input type="hidden" name="delete" id="delete" value="<%= @track.id %>">
+        <button class="btn btn-danger" type="submit">DELETE SONG</button>
+      </form>
+      <% end %>
+      <hr>
+      </hr>
+      <div class="panel-heading">
+        <h1 class="text-center login-title">Add a review</h1>
+      </div>
+      <div class="panel-body">
+        <form method="POST" action="/review">
+          <div class="form-group">
+            <input type="text" name="title" id="title" class="form-control input-sm" placeholder="Title">
+          </div>
+          <div class="form-group">
+            <input type="hidden" name="track_id" id="track_id" value="<%= @track.id %>">
+            <textarea class="form-control" name="content" rows="5" id="comment" placeholder="Write your review here"></textarea> 
+            <input type="submit" value="Submit" class="btn btn-info btn-block">           
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div> 
+
+<div class="container">
+    <% @reviews.each do |review| %>
+      <% if review.track_id == @track.id %>
+      <div class="col-md-3 col-md-offset-1">
+        <h3><a href="/tracks/<%= @track.id %>"><%= review.title %></a> </h3>
+        <p>
+          <%= review.content %>
+        </p>
+        <% if session[:user_id] %>
+        <form class="upvote" method="POST" action="/upvote_review">
+          <input type="hidden" name="review" id="review" value="<%= review.id %>">
+          <button class="btn btn-lg btn-primary btn-block" type="submit">UP VOTE</button>
+        </form>
+        <% if @track.user_id == session[:user_id] %>
+        <form class="delete" method="POST" action="/delete_review">
+          <input type="hidden" name="delete" id="delete" value="<%= review.id %>">
+          <button class="btn btn-xs btn-danger" type="submit">DELETE</button>
+        </form>
+        <% end %>
+        <% end %>
+        <% end %>
+      </div>
+    <% end %>
+</div>
+
+
+
+        
+
+
+<a href="/tracks">Back to All Tracks</a>
